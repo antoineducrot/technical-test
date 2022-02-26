@@ -1,0 +1,9 @@
+version: '3'
+services:
+  foobartory:
+    container_name: foobartory
+    environment:
+      TIME_MULTIPLIER: ${TIME_MULTIPLIER}
+    build:
+      context: .
+      dockerfile: Dockerfile

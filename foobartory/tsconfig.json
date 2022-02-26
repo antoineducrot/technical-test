@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+      "target": "es6",
+      "skipLibCheck": true,
+      "strict": true,
+      "strictNullChecks": true,
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitAny": true,
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "experimentalDecorators": true,
+      "module": "commonjs",
+      "outDir": "build",
+  },
+  "exclude": [
+      "build"
+  ],
+  "include": [
+      "./src/**/*.ts"
+  ],
+}
