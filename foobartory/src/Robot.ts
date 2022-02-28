@@ -1,3 +1,4 @@
+import tk from 'terminal-kit';
 import {v4 as generateId} from 'uuid';
 
 import config from './config';
@@ -41,8 +42,11 @@ class Robot {
       this.action = Actions.Moving;
       this.movingTo = position;
       this.position = Positions.None;
+      this.print(`Robot n°${this.id} is moving to ${position}`);
+
       setTimeout(() => {
-        console.log(`Robot n°${this.id} moved to ${position}`);
+        this.print(`Robot n°${this.id} moved to ${position}`);
+
         this.action = Actions.None;
         this.movingTo = Positions.None;
         this.position = position;
@@ -53,9 +57,10 @@ class Robot {
   public mineFoo() {
     if (this.position === Positions.Foo && this.action === Actions.None) {
       this.action = Actions.MiningFoo;
+      this.print(`Robot n°${this.id} is mining foo`);
 
       setTimeout(() => {
-        console.log(`Robot n°${this.id} mined 1 foo`);
+        this.print(`Robot n°${this.id} mined 1 foo`);
 
         this.stock.stockFoo(generateId());
         this.action = Actions.None;
@@ -66,8 +71,11 @@ class Robot {
   public mineBar() {
     if (this.position === Positions.Bar && this.action === Actions.None) {
       this.action = Actions.MiningBar;
+      this.print(`Robot n°${this.id} is mining bar`);
+
       setTimeout(() => {
-        console.log(`Robot n°${this.id} mined 1 bar`);
+        this.print(`Robot n°${this.id} mined 1 bar`);
+
         this.stock.stockBar(generateId());
         this.action = Actions.None;
       }, between(500 / config.timeMultiplier, 2000 / config.timeMultiplier));
@@ -80,13 +88,17 @@ class Robot {
       const bar = this.stock.takeBar();
 
       if (foo !== undefined && bar !== undefined) {
+        this.print(`Robot n°${this.id} is creating foobar`);
+
         this.action = Actions.CreatingFooBar;
+
         setTimeout(() => {
           if (between(0, 100) >= 60) {
             this.stock.stockBar(bar);
-            console.log(`Robot n°${this.id} failed to create foobar`);
+            this.print(`Robot n°${this.id} failed to create foobar`);
           } else {
-            console.log(`Robot n°${this.id} succeed to create foobar`);
+            this.print(`Robot n°${this.id} succeed to create foobar`);
+
             this.stock.stockFoobar(bar + foo);
           }
 
@@ -108,8 +120,10 @@ class Robot {
         this.stock.takeFoobar();
       }
 
+      this.print(`Robot n°${this.id} is selling ${nb} foobar`);
+
       setTimeout(() => {
-        console.log(`Robot n°${this.id} sold ${nb} foobar`);
+        this.print(`Robot n°${this.id} sold ${nb} foobar`);
 
         this.stock.stockMoney(nb);
         this.action = Actions.None;
@@ -134,12 +148,18 @@ class Robot {
       setTimeout(() => {
         const robot = new Robot(this.stock, this.factory);
 
-        console.log(`Robot n°${this.id} bought new robot`);
+        this.print(`Robot n°${this.id} bought new robot`);
 
         this.factory.addRobot(robot);
         this.action = Actions.None;
       }, 0);
     }
+  }
+
+  private print(str: string): void {
+    tk.terminal.moveTo(1, this.id + 6);
+    tk.terminal.eraseLineAfter();
+    tk.terminal(str);
   }
 }
 
