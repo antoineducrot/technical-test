@@ -2,6 +2,8 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-promise-executor-return */
 
+import tk from 'terminal-kit';
+
 import {Positions} from './Position';
 import {Robot} from './Robot';
 import {Stock} from './Stock';
@@ -15,6 +17,8 @@ class Factory {
   }
 
   public async start() {
+    tk.terminal.clear();
+
     while (this.isSuccess()) {
       if (this.stock.getMoney() >= 3 && this.stock.getNumberFoo() >= 6) {
         if (!this.robotOnBuying()) {
@@ -122,7 +126,18 @@ class Factory {
   }
 
   private async tick(): Promise<void> {
+    this.print(`money: ${this.stock.getMoney()}`, 1);
+    this.print(`foo: ${this.stock.getNumberFoo()}`, 2);
+    this.print(`bar: ${this.stock.getNumberBar()}`, 3);
+    this.print(`foobar: ${this.stock.getNumberFoobar()}`, 4);
+    this.print(`robot: ${this.robots.length}`, 5);
     return new Promise<void>(resolve => setTimeout(resolve, 0));
+  }
+
+  private print(str: string, y: number): void {
+    tk.terminal.moveTo(1, y);
+    tk.terminal.eraseLineAfter();
+    tk.terminal(str);
   }
 }
 
