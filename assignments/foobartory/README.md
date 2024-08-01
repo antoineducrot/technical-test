@@ -37,14 +37,6 @@ Note:
 
 ## How to launch
 
-If you have docker just launch
-
-```console
-foo@bar:~$ docker-compose up
-```
-
-If you don't just download nodejs and run
-
 ```console
 foo@bar:~$ npm install
 foo@bar:~$ npm run build
