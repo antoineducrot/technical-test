@@ -1,0 +1,32 @@
+{
+  "name": "foobartory",
+  "version": "1.0.0",
+  "main": "./build/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "npm@10.8.2",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon -r dotenv/config src/index.ts",
+    "start": "node -r dotenv/config dist/index.js",
+    "lint": "eslint src --ext ts --fix",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@repo/eslint-config-default": "*",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^17.0.20",
+    "@types/terminal-kit": "^1.28.4",
+    "@types/uuid": "^8.3.4",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "terminal-kit": "^2.4.0",
+    "uuid": "^8.3.2"
+  }
+}

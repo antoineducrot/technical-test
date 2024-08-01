@@ -1,0 +1,29 @@
+{
+  "name": "technical-test",
+  "version": "0.0.0",
+  "author": "Antoine Ducrot",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "npm@10.8.2",
+  "scripts": {
+    "prepare": "husky",
+    "build": "turbo test",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "format": "prettier --write .",
+    "lint-staged": "lint-staged",
+    "foobartory": "npm run build -w foobartory; npm run start -w foobartory"
+  },
+  "devDependencies": {
+    "husky": "^9.1.1",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.3",
+    "turbo": "^2.0.11"
+  },
+  "workspaces": [
+    "assignments/*",
+    "packages/*"
+  ]
+}

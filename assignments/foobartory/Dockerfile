@@ -3,23 +3,23 @@ FROM node:alpine as Builder
 WORKDIR /foobartory
 
 COPY package.json ./
-COPY yarn.lock ./
+COPY package-lock.json ./
 
-RUN yarn install
+RUN npm install
 
 COPY src ./src
 COPY tsconfig.json ./tsconfig.json
 
-RUN yarn build
+RUN npm run build
 
 FROM node:alpine
 
 WORKDIR /foobartory
 
 COPY package.json ./
-COPY yarn.lock ./
+COPY package-lock.json ./
 
-RUN yarn install --production=true
+RUN npm install --only=production
 
 COPY --from=Builder /foobartory/build .
 
