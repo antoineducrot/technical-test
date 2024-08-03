@@ -57,12 +57,24 @@ module.exports = {
 
     '@typescript-eslint/no-unused-vars': 'error',
 
-    'no-unused-vars': 'error'
+    'no-unused-vars': 'error',
+
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'typeAlias',
+        format: ['PascalCase'],
+        custom: {
+          regex: '^I?[A-Z][a-z]*([A-Z][a-z]*)*$',
+          match: true
+        }
+      }
+    ]
   },
 
   overrides: [
     {
-      files: ['*.test.ts', '*.spec.ts'],
+      files: ['*.test.(t|j)s'],
       env: {
         jest: true
       }
