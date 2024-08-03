@@ -1,7 +1,7 @@
 import { lazy } from '../src/lazy'
 import { Store } from '../src/store'
 import { type JsonObject } from '../src/store/json-types'
-import { type Permission } from '../src/store/permission.type'
+import { type Permission } from '../src/store/permission/permission.constant'
 import { Restrict } from '../src/store/restrict.decorator'
 import { UserStore } from '../src/userStore'
 import { AdminStore } from './../src/adminStore'

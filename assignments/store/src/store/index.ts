@@ -1,7 +1,8 @@
 import 'reflect-metadata'
 
 import { isJsonObject, type JsonObject } from './json-types'
-import { type Permission } from './permission.type'
+import { type Permission } from './permission/permission.constant'
+import { readPermissions, writePermissions } from './permission/permission.type'
 import { Restrict } from './restrict.decorator'
 import {
   isStoreResult,
@@ -10,10 +11,6 @@ import {
   type StoreValue
 } from './store.interface'
 
-const readPermissions: Permission[] = ['rw', 'r']
-const writePermissions: Permission[] = ['rw', 'w']
-
-// Could add restrictions on defined properties and methods
 class Store implements IStore {
   [key: string]: unknown
 
@@ -159,9 +156,8 @@ class Store implements IStore {
     throw new Error('Data corrupted.')
   }
 
-  // Use with care, as it may not be the best way to check if a value is a function that returns a StoreResult
   @Restrict()
-  private isFunction(value: unknown): value is () => StoreResult {
+  private isFunction(value: unknown): value is () => unknown {
     return typeof value === 'function'
   }
 }

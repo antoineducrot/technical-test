@@ -5,7 +5,7 @@ import {
   type JsonObject,
   type JsonPrimitive
 } from './json-types'
-import { type Permission } from './permission.type'
+import { type Permission } from './permission/permission.constant'
 
 type StoreResult = Store | JsonPrimitive | undefined
 
