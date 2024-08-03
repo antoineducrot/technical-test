@@ -1,3 +1,3 @@
 type Permission = 'r' | 'w' | 'rw' | 'none'
 
-export { type Permission }
+export type { Permission }
