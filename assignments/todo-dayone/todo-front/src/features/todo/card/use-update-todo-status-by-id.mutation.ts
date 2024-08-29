@@ -6,11 +6,13 @@ type UpdateTodoStatusByIdMutationVariables = {
 }
 
 type UpdateTodoStatusByIdMutationResponse = {
-  id: string
-  isDone: boolean
+  updateTodoStatusById: {
+    id: string
+    isDone: boolean
+  }
 }
 
-const MUTATION = gql`
+const UPDATE_TODO_STATUS_BY_ID_MUTATION = gql`
   mutation UpdateTodoStatusById($id: ID!, $isDone: Boolean!) {
     updateTodoStatusById(id: $id, isDone: $isDone) {
       id
@@ -23,7 +25,7 @@ const useUpdateTodoStatusByIdMutation = () => {
   const [updateTodoStatusById, { loading }] = useMutation<
     UpdateTodoStatusByIdMutationResponse,
     UpdateTodoStatusByIdMutationVariables
-  >(MUTATION)
+  >(UPDATE_TODO_STATUS_BY_ID_MUTATION, {})
 
   return {
     updateTodoStatusById,

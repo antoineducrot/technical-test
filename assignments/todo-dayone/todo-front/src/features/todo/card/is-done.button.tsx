@@ -8,18 +8,11 @@ interface IsDoneButtonProps {
 const IsDoneButton: React.FC<IsDoneButtonProps> = ({ isDone, onClick }) => {
   return (
     <Button
+      variant="contained"
+      color={isDone ? 'success' : 'error'}
       onClick={onClick}
-      sx={{
-        backgroundColor: isDone ? 'green' : 'red',
-        color: 'white',
-        fontWeight: 'bold',
-        textTransform: 'none',
-        '&:hover': {
-          backgroundColor: 'darkred'
-        }
-      }}
     >
-      {isDone ? 'Done' : 'ToDo'}
+      {isDone ? 'done' : 'todo'}
     </Button>
   )
 }

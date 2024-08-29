@@ -2,7 +2,8 @@ import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import type { Metadata } from 'next'
 
-import { ApolloWrapper } from '@/technical/apollo/ApolloWrapper'
+import { TodoFiltersProvider } from '../features/todo/todo-list/filters/todo-filters.context'
+import { ApolloWrapper } from '../technical/apollo/ApolloWrapper'
 
 export const metadata: Metadata = {
   title: 'Todo App'
@@ -18,7 +19,9 @@ export default function RootLayout({
       <body>
         <ApolloWrapper>
           <CssBaseline />
-          <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+          <AppRouterCacheProvider>
+            <TodoFiltersProvider>{children}</TodoFiltersProvider>
+          </AppRouterCacheProvider>
         </ApolloWrapper>
       </body>
     </html>
