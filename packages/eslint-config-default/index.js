@@ -1,31 +1,5 @@
-const { resolve } = require('node:path')
-
-const xoTypescriptConfig = require('eslint-config-xo-typescript')
-
-const project = resolve(process.cwd(), 'tsconfig.json')
-
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  env: {
-    node: true
-  },
-
-  parser: '@typescript-eslint/parser',
-
-  parserOptions: {
-    ecmaFeatures: { modules: true },
-    ecmaVersion: 'latest',
-    sourceType: 'module'
-  },
-
-  settings: {
-    'import/resolver': {
-      typescript: {
-        project
-      }
-    }
-  },
-
   plugins: [
     '@typescript-eslint/eslint-plugin',
     'eslint-plugin-import',
@@ -34,19 +8,11 @@ module.exports = {
 
   extends: [
     'xo',
-    'xo-typescript',
-    'xo-typescript/space',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
   ],
 
   rules: {
-    '@typescript-eslint/ban-types': (() => {
-      delete xoTypescriptConfig.rules['@typescript-eslint/ban-types'][1].types
-        .null
-      return xoTypescriptConfig.rules['@typescript-eslint/ban-types']
-    })(),
-
     'new-cap': 'off',
 
     'simple-import-sort/imports': 'error',
@@ -75,6 +41,7 @@ module.exports = {
   overrides: [
     {
       files: ['*.test.(t|j)s'],
+
       env: {
         jest: true
       }

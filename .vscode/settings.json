@@ -5,6 +5,8 @@
   "eslint.workingDirectories": [
     ".",
     "assignments/foobartory",
-    "assignments/store"
+    "assignments/store",
+    "assignments/todo-dayone/todo-dayone-provided-server",
+    "assignments/todo-dayone/todo-front"
   ]
 }

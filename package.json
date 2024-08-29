@@ -9,12 +9,11 @@
   "packageManager": "npm@10.8.2",
   "scripts": {
     "prepare": "husky",
-    "build": "turbo test",
+    "build": "turbo build",
     "lint": "turbo lint",
     "test": "turbo test",
     "format": "prettier --write .",
-    "lint-staged": "lint-staged",
-    "foobartory": "npm run build -w foobartory; npm run start -w foobartory"
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
     "husky": "^9.1.1",
@@ -24,6 +23,7 @@
   },
   "workspaces": [
     "assignments/*",
+    "assignments/todo-dayone/*",
     "packages/*"
   ]
 }

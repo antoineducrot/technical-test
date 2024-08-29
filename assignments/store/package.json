@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "jest",
-    "build": "tsc -p tsconfig.build.json",
+    "start": "ts-node src/index.ts",
     "lint": "eslint src --ext ts --fix"
   },
   "author": "Antoine DUCROT",

@@ -1,0 +1,36 @@
+type Query {
+  getTodoList(filters: TodoFiltersInput, orderBy: Ordering): [Todo!]!
+  getTodoById(id: ID!): Todo!
+}
+
+type Mutation {
+  updateTodoStatusById(id: ID!, isDone: Boolean!): Todo!
+}
+
+input TodoFiltersInput {
+  types: [TodoTypes!]
+  isDone: Boolean
+}
+
+type Todo {
+  id: ID!
+  createdAt: DateTime!
+  type: TodoTypes!
+  isDone: Boolean!
+  text: String
+  title: String!
+}
+
+enum TodoTypes {
+  RH
+  Tech
+  Marketing
+  Communication
+}
+
+enum Ordering {
+  DATE_DESC
+  DATE_ASC
+}
+
+scalar DateTime

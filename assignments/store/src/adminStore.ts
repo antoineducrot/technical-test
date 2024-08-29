@@ -6,10 +6,8 @@ import { type UserStore } from './userStore'
 export class AdminStore extends Store {
   @Restrict('r')
   public user: UserStore
-
   @Restrict()
   name = 'John Doe'
-
   @Restrict('rw')
   getCredentials = lazy(() => {
     const credentialStore = new Store()

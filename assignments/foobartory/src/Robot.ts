@@ -9,7 +9,6 @@ import { between } from './utils'
 
 class Robot {
   static count = 1
-
   private position: Position = positions.none
   private movingTo: Position = positions.none
   private action: Action = actions.none

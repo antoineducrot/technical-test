@@ -15,7 +15,6 @@ function isJsonValue(value: unknown): value is JsonValue {
   return isJsonPrimitive(value) || isJsonArray(value) || isJsonObject(value)
 }
 
-// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
 type JsonObject = {
   [key: string]: JsonValue
 }
