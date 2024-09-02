@@ -1,9 +1,29 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   root: true,
 
-  extends: ['@repo/eslint-config-default', 'eslint-config-next'],
+  plugins: [
+    '@typescript-eslint/eslint-plugin',
+    'eslint-plugin-import',
+    'eslint-plugin-simple-import-sort'
+  ],
 
-  ignorePatterns: ['node_modules/', '.eslintrc.js'],
+  extends: [
+    'eslint-config-next',
+    'xo',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended'
+  ],
+
+  rules: {
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+
+    'import/exports-last': 'error',
+    'import/no-default-export': 'error'
+  },
+
+  ignorePatterns: ['node_modules/', 'dist/'],
 
   overrides: [
     {
@@ -15,6 +35,7 @@ module.exports = {
         'global-error.tsx',
         'next.config.mjs',
         'tailwind.config.ts',
+        'lint-staged.config.mjs',
         'i18n.ts'
       ],
       rules: {

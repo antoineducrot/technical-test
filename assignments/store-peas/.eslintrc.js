@@ -13,37 +13,20 @@ module.exports = {
   ],
 
   rules: {
-    'new-cap': 'off',
-
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
 
     'import/exports-last': 'error',
     'import/no-default-export': 'error',
 
-    '@typescript-eslint/no-unused-vars': 'error',
-
-    'no-unused-vars': 'error',
-
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'typeAlias',
-        format: ['PascalCase'],
-        custom: {
-          regex: '^I?[A-Z][a-z]*([A-Z][a-z]*)*$',
-          match: true
-        }
-      }
-    ]
+    'new-cap': 'off'
   },
 
   overrides: [
     {
-      files: ['*.test.(t|j)s'],
-
-      env: {
-        jest: true
+      files: ['lint-staged.config.mjs'],
+      rules: {
+        'import/no-default-export': 'off'
       }
     }
   ],

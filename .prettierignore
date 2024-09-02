@@ -1,3 +1,5 @@
-.husky
-.gitignore
+.husky/
+.turbo/
+.next/
+next-env.d.ts
 .prettierignore

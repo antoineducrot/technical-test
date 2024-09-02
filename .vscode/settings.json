@@ -3,10 +3,10 @@
     "source.fixAll": "explicit"
   },
   "eslint.workingDirectories": [
-    ".",
-    "assignments/foobartory",
-    "assignments/store",
-    "assignments/todo-dayone/todo-dayone-provided-server",
-    "assignments/todo-dayone/todo-front"
+    "./",
+    "assignments/foobartory/",
+    "assignments/store/",
+    "assignments/todo-dayone/todo-dayone-provided-server/",
+    "assignments/todo-dayone/todo-front/"
   ]
 }

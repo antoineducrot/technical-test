@@ -20,7 +20,6 @@ type ITodoFiltersContext = {
     isDone: boolean | undefined
   }
   orderBy: TodoOrdering
-  init: () => void
   Component: () => JSX.Element
 }
 
@@ -35,7 +34,6 @@ const todoFiltersDefault: ITodoFiltersContext = {
     isDone: undefined
   },
   orderBy: TodoOrderings.DATE_DESC,
-  init: () => null,
   Component: () => <></>
 }
 
@@ -88,7 +86,7 @@ const TodoFiltersProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <TodoFiltersContext.Provider
-      value={{ orderBy, filters: { isDone, types }, init, Component }}
+      value={{ orderBy, filters: { isDone, types }, Component }}
     >
       {children}
     </TodoFiltersContext.Provider>
